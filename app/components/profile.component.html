@@ -1,1 +1,14 @@
-<h1>Profile</h1>
+<div *ngIf="user" class="card">
+    <div class="row">
+        <div class="col-md-4">
+            <img class="card-img-top img-fluid img-thumbnail" [src]="user.avatar_url" alt="User avatar">
+            <a class="btn btn-success btn-block" href="{{user.html_url}}">View Profile</a>
+        </div>
+        <div class="card-block">
+            <h4 class="card-title">{{user.name}}</h4>
+            <span class="tag tag-primary">{{user.public_repos}} Public repos</span>
+            <span class="tag tag-success">Success</span>
+            <span class="tag tag-info">Info</span>
+        </div>
+    </div>
+</div>
