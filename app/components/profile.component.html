@@ -1,36 +1,49 @@
-<div *ngIf="user" class="card">
-    <div class="row">
-        <div class="col-md-4">
-            <img class="card-img-top img-fluid img-thumbnail" [src]="user.avatar_url" alt="User avatar">
-            <a class="btn btn-success btn-block" href="{{user.html_url}}" target="_blank">View Profile</a>
+<div class="container">
+    <br>
+    <form>
+        <div class="form-group row">
+            <label class="col-xs-12" for="search">
+                    <input class="form-control" type="search" id="search" placeholder="search username" #searchbox (keyup)="searchUser(searchbox.value)">
+                </label>
         </div>
-        <div class="col-md-8">
-            <h4 class="card-title">{{user.name}}</h4>
-            <span *ngIf="user.public_repos" class="tag tag-primary">{{user.public_repos}} Public repos</span>
-            <span *ngIf="user.public_gists" class="tag tag-success">{{user.public_repos}} Public repos</span>
-            <span *ngIf="user.followers" class="tag tag-info">{{user.public_repos}} Public repos</span>
-            <hr>
-            <ul class="list-group">
-                <li class="list-group-item"><strong>username :</strong>
-                    <span>{{user.login}}</span>
-                </li>
-                <li class="list-group-item"><strong>location :</strong> <span>{{user.location}}</span></li>
-            </ul>
+
+    </form>
+
+
+    <div *ngIf="user" class="card">
+        <div class="row">
+            <div class="col-md-4">
+                <img class="card-img-top img-fluid img-thumbnail" [src]="user.avatar_url" alt="User avatar">
+                <a class="btn btn-success btn-block" href="{{user.html_url}}" target="_blank">View Profile</a>
+            </div>
+            <div class="col-md-8">
+                <h4 class="card-title">{{user.name}}</h4>
+                <span *ngIf="user.public_repos" class="tag tag-primary">{{user.public_repos}} Public Repos</span>
+                <span *ngIf="user.public_gists" class="tag tag-success">{{user.public_gists}} Public Gists</span>
+                <span *ngIf="user.followers" class="tag tag-info">{{user.followers}} Followers</span>
+                <hr>
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>username :</strong>
+                        <span>{{user.login}}</span>
+                    </li>
+                    <li class="list-group-item"><strong>location :</strong> <span>{{user.location}}</span></li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="list-group">
-    <div *ngFor="let repo of repos" class="row list-group-item">
-        <div class="col-md-8">
-            <h4> <a href="{{repo.url}}">{{repo.name}}</a></h4>
-            <p>{{repo.description}}</p>
-        </div>
-        <div class="col-md-4">
-            <span class="tag tag-primary">{{repo.watchers}} Watchers</span>
-            <span class="tag tag-success">{{repo.forks_count}} Forks</span>
-            <span class="tag tag-danger">{{repo.open_issues_count}} Issues</span>
-            <span class="tag tag-warning">{{repo.language}}</span>
+    <div class="list-group">
+        <div *ngFor="let repo of repos" class="row list-group-item">
+            <div class="col-md-8">
+                <h4> <a href="{{repo.url}}">{{repo.name}}</a></h4>
+                <p>{{repo.description}}</p>
+            </div>
+            <div class="col-md-4">
+                <span class="tag tag-primary">{{repo.watchers}} Watchers</span>
+                <span class="tag tag-success">{{repo.forks_count}} Forks</span>
+                <span class="tag tag-danger">{{repo.open_issues_count}} Issues</span>
+                <span class="tag tag-warning">{{repo.language}}</span>
+            </div>
         </div>
     </div>
 </div>

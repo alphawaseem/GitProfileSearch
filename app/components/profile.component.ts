@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GithubServiceInjectable } from './../services/github.service';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 @Component({
     moduleId : module.id,
     selector : 'profile',
@@ -9,13 +10,14 @@ export class ProfileComponent{
     user : Object;
     repos : any[];
     constructor(private github:GithubServiceInjectable){
-        github.getUser('alphawaseem').subscribe(user => {
+    }
+
+    searchUser(username:string){
+        this.github.getUser(username).subscribe(user => {
             this.user = user;
-            console.log(this.user); 
         });
-        github.getRepos('alphawaseem').subscribe( repos => {
+        this.github.getRepos(username).subscribe( repos => {
             this.repos = repos;
-            console.log(repos);
         })
     }
 }
