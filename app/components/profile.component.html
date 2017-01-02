@@ -6,9 +6,9 @@
         </div>
         <div class="card-block">
             <h4 class="card-title">{{user.name}}</h4>
-            <span class="tag tag-primary">{{user.public_repos}} Public repos</span>
-            <span class="tag tag-success">Success</span>
-            <span class="tag tag-info">Info</span>
+            <span *ngIf="user.public_repos" class="tag tag-primary">{{user.public_repos}} Public repos</span>
+            <span *ngIf="user.public_gists" class="tag tag-success">{{user.public_repos}} Public repos</span>
+            <span *ngIf="user.followers" class="tag tag-info">{{user.public_repos}} Public repos</span>
         </div>
     </div>
 </div>
