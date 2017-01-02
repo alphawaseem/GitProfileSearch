@@ -8,8 +8,13 @@ export class GithubServiceInjectable{
     constructor(private http:Http){
         // console.log('github service started');
     }
-    getUser(){
-        return this.http.get('https://api.github.com/users/alphawaseem')
+    getUser(user:string){
+        return this.http.get(`https://api.github.com/users/${user}`)
         .map(result => result.json());
+    }
+
+    getRepos(user:string){
+        return this.http.get(`https://api.github.com/users/${user}/repos`)
+        .map(result=>result.json());
     }
 }

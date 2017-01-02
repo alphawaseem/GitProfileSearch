@@ -19,3 +19,18 @@
         </div>
     </div>
 </div>
+
+<div class="list-group">
+    <div *ngFor="let repo of repos" class="row list-group-item">
+        <div class="col-md-8">
+            <h4> <a href="{{repo.url}}">{{repo.name}}</a></h4>
+            <p>{{repo.description}}</p>
+        </div>
+        <div class="col-md-4">
+            <span class="tag tag-primary">{{repo.watchers}} Watchers</span>
+            <span class="tag tag-success">{{repo.forks_count}} Forks</span>
+            <span class="tag tag-danger">{{repo.open_issues_count}} Issues</span>
+            <span class="tag tag-warning">{{repo.language}}</span>
+        </div>
+    </div>
+</div>
